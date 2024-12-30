@@ -7,7 +7,9 @@ export const website = "https://jwjang.net"
 
 
 // About
-export const about = "An adventurous man working as a safety inspector with a quirky sense of humor. Husband to Louis Griffin. Father of Chris, Brian, and Stewie."
+export const about = "I’m a 33-year-old engineer passionate about Software and Systems Security, driven by curiosity to solve complex security challenges."
+
+export const about_2 = "During my Ph.D., I’ve worked closely with rewriting assembly code to enforce data isolation, leveraging modern hardware features like ARM’s Memory Tagging Extension, and implementing techniques such as Software Fault-Based Isolation. These experiences have honed my ability to design secure and efficient systems, bridging the software and hardware gap."
 
 // Work Experience --> #work section
 export const work = [
