@@ -2,6 +2,7 @@
 import * as CONTENT from "../pages/content"
 import AccordionLayout from "../layouts/AccordionLayout.astro";
 import Card from "./Card.astro";
+import { Icon } from "astro-icon"
 ---
 
 <ul class="shadow-box">
@@ -53,7 +54,7 @@ import Card from "./Card.astro";
               timeframe={`${item.from} - ${item.to}`}
               description={item.location}
               tags={""}
-              url={"#"}
+              url={item.url}
               url_name={item.institute}
             />
           );
@@ -95,7 +96,7 @@ import Card from "./Card.astro";
       }
     </AccordionLayout>
 
-    <AccordionLayout title={"Achievements"} icon={"mdi:trophy-award"}>
+    <!-- <AccordionLayout title={"Achievements"} icon={"mdi:trophy-award"}>
       {
         CONTENT.achievements.map((item) => {
           return (
@@ -110,22 +111,36 @@ import Card from "./Card.astro";
           );
         })
       }
-    </AccordionLayout>
+    </AccordionLayout> -->
 
     <AccordionLayout title={"Contact"} icon={"ri:contacts-book-fill"}>
-      {
-        CONTENT.contact.map((item) => {
-          return (
-            <Card
-              title={""}
-              timeframe=""
-              description=""
-              tags=""
-              url={item.source}
-              url_name={item.source_name}
-            />
-          );
-        })
-      }
+      <div class="grid grid-cols-2 gap-8 py-4">
+        {
+          CONTENT.contact.map((item) => {
+            return (
+              <div class="flex items-center gap-2">
+                {item.source_icon.endsWith(".svg") ? (
+                  <img
+                    src={item.source_icon}
+                    alt={`${item.source_name} icon`}
+                    class="w-6 h-6"
+                  />
+                ) : (
+                  <Icon name={item.source_icon} class="w-6 h-6 text-text/70" />
+                )}
+                <a
+                  href={item.source}
+                  target="_blank"
+                  class="text-text/80 hover:text-text/100"
+                >
+                  {item.source_name}
+                </a>
+              </div>
+            );
+          })
+        }
+      </div>
     </AccordionLayout>
+    
+
 </ul>
