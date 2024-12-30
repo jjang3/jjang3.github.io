@@ -1,16 +1,32 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+const defaultTheme = require('tailwindcss/defaultTheme')
+export default {
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', './node_modules/flowbite/**/*.js'],
+	daisyui: {
+		themes: [
+			{
+				lofi: {
+					...require("daisyui/src/theming/themes")["lofi"],
+					"--rounded-box": "1rem",
+					"--rounded-btn": "0.5rem",
+					"--rounded-badge": "1.9rem"
+				},
+				black: {
+					...require("daisyui/src/theming/themes")["black"],
+					"--rounded-box": "1rem",
+					"--rounded-btn": "0.5rem",
+					"--rounded-badge": "1.9rem",
+					"secondary": "#e5e5e5"
+				}
+			}
+		],
+	},
 	theme: {
 		extend: {
-			colors: {
-				'text': 'hsl(189, 87%, 97%)',
-				'background': 'hsl(0, 0%, 0%)',
-				'primary': 'hsl(216, 82%, 27%)',
-				'secondary': 'hsl(246, 82%, 13%)',
-				'accent': 'hsl(246, 82%, 53%)',
-			}
+			fontFamily: {
+				'sans': ["DM Sans", "Inter", ...defaultTheme.fontFamily.sans],
+			},
 		},
 	},
-	plugins: [],
+	plugins: [require("@tailwindcss/typography"), require("daisyui")],
 }
