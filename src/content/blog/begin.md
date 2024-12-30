@@ -1,10 +1,8 @@
 ---
-layout: "../layouts/Base.astro"
-publishedAt: 2024-12-30
+title: "The Beginning"
+publishedAt: 2024-12-29
 ---
 
-# About Me
+# The Beginning
 
-I am a software engineer passionate about solving complex problems.
-
-During my Ph.D., I worked on systems security, focusing on...
+Welcome to the blog post! This is the beginning of a wonderful journey...
