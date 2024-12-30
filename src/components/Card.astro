@@ -22,8 +22,8 @@ const colorMap = {
   "Circuit Design": "bg-green-300 text-black", // Light Green for circuits
   Shell: "bg-gray-400 text-black", // Neutral Gray for Shell scripts
   SQL: "bg-teal-500 text-black", // Slightly darker Teal for databases
-  OpenCV: "bg-rose-200 text-black", // Rose Pink for Swift
-  TensorFlow: "bg-sky-300 text-black", // Light Sky Blue for Dart
+  OpenCV: "bg-rose-200 text-black", // Rose Pink for OpenCV
+  TensorFlow: "bg-sky-300 text-black", // Light Sky Blue for TensorFlow
 
   // Layout/Design Tools
   "Hardware Debugging": "bg-fuchsia-200 text-black", // Bright Fuchsia for creativity
@@ -33,7 +33,7 @@ const colorMap = {
   Teaching: "bg-violet-300 text-black", // Light Violet for teaching concepts
   Verilog: "bg-red-500 text-black", // Deeper Red for Verilog
   VerilogA: "bg-orange-400 text-black", // Bright Orange for VerilogA
-  "Magnetic Fields": "bg-blue-100 text-black", // Deep Blue for Comsol and scientific focus
+  "Magnetic Fields": "bg-blue-100 text-black", // Deep Blue for scientific focus
 
   // MongoDB
   MongoDB: "bg-green-500 text-black", // Bright Green matches MongoDB's branding
@@ -41,22 +41,20 @@ const colorMap = {
   // Default Fallback
   default: "bg-gray-500 text-white", // Neutral Fallback
 };
-
-
 ---
 
-<div class="grid grid-cols-3 grid-rows-1 w-full p-2 place-items-center border-b-[1px] border-dashed py-8 border-text/25">
+<div class="grid grid-cols-3 grid-rows-1 w-full p-2 place-items-center border-b-[1px] border-dashed py-8 border-text/25 dark:border-text-dark/25">
     <!-- Timeframe -->
     <div class="self-start justify-self-start">
-        <p class="text-text/50 text-base">
+        <p class="text-text/50 dark:text-text-dark/50 text-base">
             {timeframe}
         </p>
     </div>
 
     <!-- Title, Description, and Tags -->
     <div class="self-start justify-self-start text-left">
-        <p class="text-lg text-text/60">{title}</p>
-        <p class="text-sm text-text/50">{description}</p>
+        <p class="text-lg text-text/60 dark:text-text-dark/60">{title}</p>
+        <p class="text-sm text-text/50 dark:text-text-dark/50">{description}</p>
 
         <!-- Render Tags -->
         {Array.isArray(tags) && tags.length > 0 && (
@@ -76,7 +74,11 @@ const colorMap = {
 
     <!-- URL -->
     <div class="self-start justify-self-end">
-        <a href={url} target="_blank" class="text-base text-right text-text/60 hover:text-text/80 flex justify-center items-center">
+        <a
+          href={url}
+          target="_blank"
+          class="text-base text-right text-text/60 dark:text-text-dark/60 hover:text-text/80 dark:hover:text-text-dark/80 flex justify-center items-center"
+        >
             {url_name}
             {url !== "#" && <Icon name="icon-park-outline:unlink" class="w-4 h-4 ml-2" />}
         </a>
