@@ -1,9 +1,10 @@
 // Personal Information --> #hero section
-export const name = "Peter Griffin"
-export const designation = "Safety Inspector"
-export const location = "Quahog, Rhode Island"
+export const name = "Jae-Won Jang"
+export const designation = "Cyber Engineer"
+export const location = "McLean, VA"
 export const pronouns = "he/him"
-export const website = "https://petergriffin.com"
+export const website = "https://jwjang.net"
+
 
 // About
 export const about = "An adventurous man working as a safety inspector with a quirky sense of humor. Husband to Louis Griffin. Father of Chris, Brian, and Stewie."

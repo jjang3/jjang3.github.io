@@ -8,7 +8,7 @@ import * as CONTENT from "../pages/content"
     class="grid grid-cols-3 grid-rows-1 place-items-center w-[98vw] max-w-2xl"
   >
     <div
-      class="rounded-full border-primary self-end shadow-2xl md:w-24 w-20 aspect-square"
+      class="rounded-full border-primary self-end shadow-2xl md:w-32 w-28 aspect-square"
     >
       <img
         src="/profile.jpg"
@@ -21,6 +21,7 @@ import * as CONTENT from "../pages/content"
       <h1 class="text-3xl text-text">{CONTENT.name}</h1>
       <h3 class="text-lg text-text/90">{CONTENT.designation}</h3>
       <h5 class="text-sm text-text/80">{CONTENT.location}</h5>
+      
     </div>
 
     <div class="md:grid text-right self-end hidden">
@@ -32,6 +33,21 @@ import * as CONTENT from "../pages/content"
       >
         {CONTENT.website}
       </a>
+    </div>
+
+    <!-- Full-Width Paragraph -->
+    <div class="col-span-3 w-full text-center md:text-left">
+      <h1 class="intro-heading pt-4 text-2xl font-medium leading-relaxed text-text/90">
+        Hello! my name is Jae-Won.<br />
+        <span class="highlight">I am a Researcher</span>, <span class="highlight">Systems Security Enthusiast</span>, 
+        and <span class="highlight">Cyber Engineer</span> at 
+        <a 
+          target="_blank"
+          href="https://www.mitre.org/who-we-are"
+          class="text-blue-500 font-bold hover:underline"
+        >
+          MITRE</a>.
+      </h1>
     </div>
   </article>
 </header>
