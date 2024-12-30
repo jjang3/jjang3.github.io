@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const blogs = await getCollection("blog");
+  return blogs.map((post) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const post = await getCollection("blog").then((collection) =>
+  collection.find((entry) => entry.slug === slug)
+);
+
+if (!post) {
+  throw new Error(`Post not found for slug: ${slug}`);
+}
+
+// Use the render() function to render Markdown content
+const { Content } = await post.render();
+const { publishedAt } = post.data;
+---
+
+<BaseLayout>
+  <article class="container mx-auto px-4 py-8 text-gray-200">
+    <!-- Only display the published date -->
+    <p class="text-sm text-gray-400 mb-6">
+      Published on <time datetime={publishedAt.toISOString()}>{publishedAt.toLocaleDateString()}</time>
+    </p>
+    <!-- Render the Markdown content -->
+    <div class="prose dark:prose-invert">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

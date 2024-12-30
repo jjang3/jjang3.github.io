@@ -79,20 +79,16 @@ import { Icon } from "astro-icon"
       }
     </AccordionLayout>
 
-    <AccordionLayout title={"Blogs/Writings"} icon={"ic:round-edit-note"}>
+    <AccordionLayout title={"Blogs"} icon={"carbon:pen"}>
       {
-        CONTENT.blogs.map((item) => {
-          return (
-            <Card
-              title={item.title}
-              timeframe={item.date}
-              description={item.description}
-              tags=""
-              url={item.url}
-              url_name={item.publisher}
-            />
-          );
-        })
+        CONTENT.blogs.map((item) => (
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
+            <a href={item.url} style={{ textDecoration: "none", color: "inherit" }}>
+              {item.title}
+            </a>
+            <span style={{ whiteSpace: "nowrap" }}>{item.date}</span>
+          </div>
+        ))
       }
     </AccordionLayout>
 

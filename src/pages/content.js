@@ -154,20 +154,11 @@ export const certificates = [
 
 // Blogs --> #blogs section
 export const blogs = [
-	// {
-	// 	date: "12-July, 2023",
-	// 	url: "https://medium.com/",
-	// 	title: "Adventures in Safety Inspection",
-	// 	description: "Join me in my humorous escapades as a safety inspector in Quahog.",
-	// 	publisher: "Quahog Times",
-	// },
-	// {
-	// 	date: "25-June, 2023",
-	// 	url: "https://medium.com/",
-	// 	title: "Top 10 Safety Tips for Families",
-	// 	description: "Learn the best safety practices for families to ensure a secure environment.",
-	// 	publisher: "Safety Monthly",
-	// }
+	{
+		date: "Dec 30th, 2024",
+		url: "/blog/begin",
+		title: "The Beginning"
+	},
 ]
 
 // Contact --> #contact section

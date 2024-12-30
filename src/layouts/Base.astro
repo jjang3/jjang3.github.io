@@ -1,0 +1,48 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title || "Default Title"}</title>
+    {description && <meta name="description" content={description} />}
+    <style>
+      /* Ensure full-height layout */
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: white; /* Default light mode */
+      }
+
+      html.dark, body.dark {
+        background-color: black; /* Dark mode background */
+      }
+
+      main {
+        min-height: 100%; /* Ensures content takes full height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center content vertically */
+        align-items: center; /* Center content horizontally */
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body class="bg-white dark:bg-black text-black dark:text-white font-sans">
+    <main class="container mx-auto px-4 py-8">
+      {title && <h1 class="text-3xl font-bold">{title}</h1>}
+      <article class="prose dark:prose-invert">
+        <slot />
+      </article>
+    </main>
+  </body>
+</html>

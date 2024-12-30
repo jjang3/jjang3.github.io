@@ -1,3 +1,9 @@
 {
-  "extends": "astro/tsconfigs/strict"
+  "extends": "./node_modules/astro/tsconfigs/strict",
+  "compilerOptions": {
+    "types": ["astro/client"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "astro",
+    "verbatimModuleSyntax": true
+  }
 }
