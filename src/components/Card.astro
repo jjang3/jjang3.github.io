@@ -1,27 +1,84 @@
 ---
 import { Icon } from "astro-icon";
-const { timeframe, title, description, url, tags, url_name } = Astro.props
+const { timeframe, title, description, url, tags, url_name } = Astro.props;
+
+// Define a mapping of tag names to Tailwind color classes
+const colorMap = {
+  // Programming Languages
+  Python: "bg-yellow-400 text-black", // Yellow matches Python's official logo
+  Assembly: "bg-gray-300 text-black", // Neutral Light Gray
+  C: "bg-blue-500 text-black", // Deep Blue for traditional C
+  "C++": "bg-blue-400 text-black", // Lighter Blue for C++
+  LLVM: "bg-purple-300 text-black", // Light Purple reflects LLVM's branding
+  Haskell: "bg-indigo-400 text-black", // Indigo for functional programming
+  Rust: "bg-orange-500 text-black", // Bright Orange for Rust
+  Go: "bg-cyan-400 text-black", // Light Cyan for Go
+  JavaScript: "bg-yellow-300 text-black", // Light Yellow for JavaScript
+  TypeScript: "bg-blue-600 text-white", // Dark Blue for TypeScript
+
+  // Technical Tools/Topics
+  Java: "bg-red-400 text-black", // Red matches Java's branding
+  HTML: "bg-orange-500 text-black", // Orange for HTML's bold feel
+  "Circuit Design": "bg-green-300 text-black", // Light Green for circuits
+  Shell: "bg-gray-400 text-black", // Neutral Gray for Shell scripts
+  SQL: "bg-teal-500 text-black", // Slightly darker Teal for databases
+  Swift: "bg-rose-400 text-black", // Rose Pink for Swift
+  Dart: "bg-sky-300 text-black", // Light Sky Blue for Dart
+
+  // Layout/Design Tools
+  "Hardware Debugging": "bg-fuchsia-200 text-black", // Bright Fuchsia for creativity
+  "Layout Design": "bg-fuchsia-400 text-black", // Bright Fuchsia for creativity
+  "Linux Kernel": "bg-lime-400 text-black", // Bright Lime Green for the Kernel
+  "Technical Writing": "bg-amber-300 text-black", // Amber for writing and documentation
+  Teaching: "bg-violet-300 text-black", // Light Violet for teaching concepts
+  Verilog: "bg-red-500 text-black", // Deeper Red for Verilog
+  VerilogA: "bg-orange-400 text-black", // Bright Orange for VerilogA
+  "Magnetic Fields": "bg-blue-100 text-black", // Deep Blue for Comsol and scientific focus
+
+  // MongoDB
+  MongoDB: "bg-green-500 text-black", // Bright Green matches MongoDB's branding
+
+  // Default Fallback
+  default: "bg-gray-500 text-white", // Neutral Fallback
+};
+
+
 ---
 
 <div class="grid grid-cols-3 grid-rows-1 w-full p-2 place-items-center border-b-[1px] border-dashed py-8 border-text/25">
+    <!-- Timeframe -->
     <div class="self-start justify-self-start">
         <p class="text-text/50 text-base">
-            { timeframe }
+            {timeframe}
         </p>
     </div>
 
+    <!-- Title, Description, and Tags -->
     <div class="self-start justify-self-start text-left">
-        <p class="text-lg text-text/80">{title}</p>
-        <p class="text-sm text-text/70">{description}</p>
-        <sub class="text-xs text-text/60">{tags}</sub>
+        <p class="text-lg text-text/60">{title}</p>
+        <p class="text-sm text-text/50">{description}</p>
+
+        <!-- Render Tags -->
+        {Array.isArray(tags) && tags.length > 0 && (
+          <div class="mt-2 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span
+                class={`px-2 py-1 text-xs font-medium font-mono rounded-full ${
+                    colorMap[tag as keyof typeof colorMap] || colorMap.default
+                }`}
+                >
+                {tag}
+                </span>
+            ))}
+          </div>
+        )}
     </div>
 
+    <!-- URL -->
     <div class="self-start justify-self-end">
         <a href={url} target="_blank" class="text-base text-right text-text/60 hover:text-text/80 flex justify-center items-center">
             {url_name}
-            {
-               url !== "#" && <Icon name="icon-park-outline:unlink" class="w-4 h-4 ml-2" />
-            }
+            {url !== "#" && <Icon name="icon-park-outline:unlink" class="w-4 h-4 ml-2" />}
         </a>
     </div>
 </div>
