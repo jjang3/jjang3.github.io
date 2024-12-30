@@ -1,5 +1,5 @@
 // Personal Information --> #hero section
-export const name = "Jae-Won Jang"
+export const name = "Jay Jang"
 export const designation = "Cyber Engineer"
 export const location = "McLean, VA"
 export const pronouns = "he/him"
@@ -101,8 +101,8 @@ export const projects = [
 // Education --> #education section
 export const education = [
 	{
-		from: "2024",
-		to: "2018",
+		from: "2018",
+		to: "2024",
 		institute: "Virginia Tech",
 		course: "Ph.D. in Computer Engineering",
 		url: "https://www.vt.edu",
