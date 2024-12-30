@@ -189,7 +189,7 @@ export const contact = [
 	},
 	{
 	  source_name: "Bluesky",
-	  source: "https://bsky.app/profile/bobacha.bsky.social",
+	  source: "https://bsky.app/profile/jaylovesboba.bsky.social",
 	  source_icon: "mdi:cloud", // Placeholder icon for Bluesky
 	},
   ];
