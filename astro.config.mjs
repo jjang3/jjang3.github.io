@@ -4,7 +4,7 @@ import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://jjang3.github.io',
+  site: 'https://jwjang.net',
   integrations: [tailwind(), alpinejs()],
   output: 'static'
 });
