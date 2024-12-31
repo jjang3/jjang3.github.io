@@ -1,0 +1,127 @@
+---
+import Header from "../components/BlogHeader.astro";
+import Footer from "../components/Footer.astro";
+import { Icon } from "astro-icon";
+
+interface Props {
+  title?: string;
+  description?: string;
+  publishedAt?: string; // Optional published date
+}
+
+const { title, description, publishedAt } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title || "Default Title"}</title>
+    {description && <meta name="description" content={description} />}
+    <script is:inline>
+      function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.classList.toggle("dark", theme === "black");
+        localStorage.setItem("theme", theme);
+      }
+
+      // Set default theme to dark mode if no preference is saved
+      const savedTheme = localStorage.getItem("theme") || "black";
+      setTheme(savedTheme);
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("lofi-mode").addEventListener("click", () => setTheme("lofi"));
+        document.getElementById("black-mode").addEventListener("click", () => setTheme("black"));
+      });
+    </script>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: white; /* Light mode */
+        font-family: 'Manrope', sans-serif; /* Match index.astro */
+      }
+
+      html.dark, body.dark {
+        background-color: black; /* Dark mode */
+      }
+
+      .content-wrapper {
+        max-width: 65ch;
+        margin: 2rem auto;
+        text-align: center;
+      }
+
+      .content-wrapper h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: inherit;
+      }
+
+      .content-wrapper h3 {
+        font-size: 1rem;
+        color: #888;
+        margin-bottom: 1rem;
+      }
+
+      .prose {
+        max-width: 65ch;
+        margin: 0 auto 2rem; /* Add space at the bottom for footer */
+        line-height: 1.8;
+        color: inherit;
+      }
+
+        footer {
+        margin-top: 3rem; /* Increase gap above the footer */
+        padding-top: 1rem;
+        border-top: 1px solid #444; /* Optional: Subtle divider above the footer */
+        text-align: center; /* Ensure proper alignment */
+        }
+    </style>
+  </head>
+  <body class="bg-background text-text dark:bg-background-dark dark:text-text-dark flex flex-col min-h-screen">
+    <!-- Include the Header -->
+    <Header />
+
+    <!-- Theme Toggle Buttons -->
+    <div class="flex items-center justify-end fixed top-4 right-4 gap-4 z-10">
+      <!-- Light Mode Button with Sun Icon -->
+      <button id="lofi-mode" class="p-2 bg-gray-200 text-black rounded-full shadow hover:bg-gray-300">
+        <Icon name="mdi:weather-sunny" class="w-6 h-6" />
+      </button>
+
+      <!-- Dark Mode Button with Moon Icon -->
+      <button id="black-mode" class="p-2 bg-gray-800 text-white rounded-full shadow hover:bg-gray-700">
+        <Icon name="mdi:weather-night" class="w-6 h-6" />
+      </button>
+    </div>
+
+    <!-- Unified Divider -->
+    <div class="divider mx-auto h-2 max-w-3xl w-[95vw] bg-gradient-to-r from-red-900 via-blue-900 to-slate-900 my-6"></div>
+
+    <!-- Blog Title and Metadata -->
+    <div class="content-wrapper">
+      {title && <h1 class="text-4xl font-bold mb-2">{title}</h1>}
+      {publishedAt && (
+        <h3>
+          Published on {new Date(publishedAt).toLocaleDateString('en-US', { timeZone: 'UTC' })}
+        </h3>
+      )}
+      {description && <p class="text-xl mb-4">{description}</p>}
+    </div>
+
+    <!-- Blog Content -->
+    <main>
+      <article class="prose dark:prose-invert">
+        <slot />
+      </article>
+    </main>
+    
+    <!-- Spacer Between Main and Footer -->
+    <div class="footer-spacing"></div>
+    <!-- Include the Footer -->
+    <Footer />
+  </body>
+</html>

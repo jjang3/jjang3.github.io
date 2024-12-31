@@ -15,7 +15,7 @@ const { title, icon } = Astro.props;
             <div class="flex items-center justify-between">
                 <!-- Accordion Title -->
                 <h4
-                    class="text-2xl font-mono text-text dark:text-text-dark hover:text-primary dark:hover:text-secondary flex items-start"
+                    class="text-2xl font-mono text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-secondary flex items-start"
                 >
                     <Icon name={icon} class="w-8 h-8 mr-4" />
                     {title}
@@ -24,7 +24,7 @@ const { title, icon } = Astro.props;
                 <!-- Arrow Icon -->
                 <Icon
                     name="ic:baseline-arrow-drop-down"
-                    class="w-5 h-5 text-text dark:text-text-dark transition-transform duration-300"
+                    class="w-5 h-5 text-gray-800 dark:text-gray-300 transition-transform duration-300"
                     x-bind:style="selected == 1 ? 'transform: rotate(180deg)' : ''"
                 />
             </div>
@@ -36,7 +36,7 @@ const { title, icon } = Astro.props;
             x-ref="container1"
             x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''"
         >
-            <div class="py-4 px-2 text-text dark:text-text-dark">
+            <div class="py-4 px-2 text-gray-800 dark:text-gray-400">
                 <slot />
             </div>
         </div>

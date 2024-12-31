@@ -8,7 +8,8 @@ export default defineConfig({
   site: 'https://jwjang.net',
   integrations: [
     tailwind(),
-    alpinejs()
+    alpinejs(),
+    mdx()
   ],
   output: 'static'
 });

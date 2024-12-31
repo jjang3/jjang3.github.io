@@ -1,37 +1,30 @@
 ---
+import BlogLayout from "../../layouts/BlogLayout.astro";
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/Base.astro";
 
+// Generate static paths for all blog posts
 export async function getStaticPaths() {
-  const blogs = await getCollection("blog");
-  return blogs.map((post) => ({
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
     params: { slug: post.slug },
+    props: { post }, // Pass post data as props
   }));
 }
 
-const { slug } = Astro.params;
-const post = await getCollection("blog").then((collection) =>
-  collection.find((entry) => entry.slug === slug)
-);
+// Destructure the post object from Astro.props
+const { post } = Astro.props;
 
+// Handle error if post is not found
 if (!post) {
-  throw new Error(`Post not found for slug: ${slug}`);
+  Astro.response.status = 404;
+  throw new Error(`Post not found for slug: ${Astro.params.slug}`);
 }
 
-// Use the render() function to render Markdown content
+// Render MDX content
 const { Content } = await post.render();
-const { publishedAt } = post.data;
+const { title, publishedAt, description } = post.data;
 ---
 
-<BaseLayout>
-  <article class="container mx-auto px-4 py-8 text-gray-200">
-    <!-- Only display the published date -->
-    <p class="text-sm text-gray-400 mb-6">
-      Published on <time datetime={publishedAt.toISOString()}>{publishedAt.toLocaleDateString()}</time>
-    </p>
-    <!-- Render the Markdown content -->
-    <div class="prose dark:prose-invert">
-      <Content />
-    </div>
-  </article>
-</BaseLayout>
+<BlogLayout title={title} publishedAt={publishedAt} description={description}>
+  <Content />
+</BlogLayout>

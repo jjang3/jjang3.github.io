@@ -1,20 +1,29 @@
-<footer class="bg-background/5 flex justify-between items-center px-2 py-1">
-    <p>© 2024 Jay Jang</p>
-
-    <p>
-        Credit:
-        <a href="https://github.com/uskhokhar/astro-vitae" target="_blank" class="underline underline-offset-2 hover:no-underline">
-            Astro-Vitae Template
-        </a>
+<footer class="bg-background text-text dark:bg-background-dark dark:text-text-dark flex justify-between items-center px-4 py-2">
+    <p class="text-sm text-text/50 dark:text-text-dark/50">© 2024 Jay Jang</p>
+  
+    <p class="text-sm text-text/50 dark:text-text-dark/50">
+      Credit:
+      <a
+        href="https://github.com/uskhokhar/astro-vitae"
+        target="_blank"
+        class="underline underline-offset-2 hover:text-text/80 dark:hover:text-text-dark/80"
+      >
+        Astro-Vitae Template
+      </a>
     </p>
-</footer>
-
-<style>
-    p{
-        @apply text-sm text-text/50;
+  </footer>
+  
+  <style>
+    footer {
+      @apply bg-background text-text dark:bg-background-dark dark:text-text-dark;
     }
-
+  
+    p {
+      @apply text-sm text-text/50 dark:text-text-dark/50;
+    }
+  
     a {
-        @apply underline hover:text-text/80;
+      @apply underline hover:text-text/80 dark:hover:text-text-dark/80;
     }
-</style>
+  </style>
+  
