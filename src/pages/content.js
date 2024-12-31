@@ -156,8 +156,8 @@ export const certificates = [
 export const blogs = [
 	{
 		date: "Dec 30th, 2024",
-		url: "/blog/intro",
-		title: "Introduction"
+		url: "/blog/preface",
+		title: "Preface"
 	},
 ]
 
