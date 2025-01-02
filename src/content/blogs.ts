@@ -55,7 +55,7 @@ export interface BlogPost {
     {
         date: "Jan 02nd, 2025", // date
         url: "/blog/intro-elem",
-        title: "Introduction (Elementary)"
+        title: "Introduction - Elementary (Part 1)"
     },
   ];
   
