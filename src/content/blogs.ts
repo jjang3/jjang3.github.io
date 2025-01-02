@@ -53,9 +53,9 @@ export interface BlogPost {
     },
     // Add more blog entries if desired
     {
-        date: "Jan 02nd, 2025", // will become "Dec 30, 2024" internally
-        url: "/blog/intro",
-        title: "Introduction"
+        date: "Jan 02nd, 2025", // date
+        url: "/blog/intro-elem",
+        title: "Introduction (Elementary)"
     },
   ];
   
