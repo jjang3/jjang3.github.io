@@ -3,6 +3,9 @@ import * as CONTENT from "../pages/content"
 import AccordionLayout from "../layouts/AccordionLayout.astro";
 import Card from "./Card.astro";
 import { Icon } from "astro-icon"
+
+import { blogs, groupBlogsByMonth } from "../content/blogs";
+const groupedBlogs = groupBlogsByMonth(blogs);
 ---
 
 <ul class="shadow-box">
@@ -79,7 +82,7 @@ import { Icon } from "astro-icon"
       }
     </AccordionLayout>
 
-    <AccordionLayout title={"Blogs"} icon={"carbon:pen"}>
+    <!-- <AccordionLayout title={"Blogs"} icon={"carbon:pen"}>
       {
         CONTENT.blogs.map((item) => (
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
@@ -90,7 +93,27 @@ import { Icon } from "astro-icon"
           </div>
         ))
       }
-    </AccordionLayout>
+    </AccordionLayout> -->
+     <!-- Blogs Accordion -->
+    
+  <!-- Example usage (with a new Accordion for Blogs) -->
+  <AccordionLayout title="Blogs" icon="carbon:pen">
+    {Object.entries(groupedBlogs).map(([month, posts], index) => (
+      <div style="margin: 1rem 0;">
+        {index > 0 && <hr style="margin-bottom: 0.5rem; border-bottom: 1px solid #666;" />}
+
+        <h3 style="font-weight: bold; margin-bottom: 0.5rem;">{month}</h3>
+        {posts.map((item) => (
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+            <a href={item.url} style={{ textDecoration: "none", color: "inherit" }}>
+              {item.title}
+            </a>
+            <span style={{ whiteSpace: "nowrap" }}>{item.date}</span>
+          </div>
+        ))}
+      </div>
+    ))}
+  </AccordionLayout>
 
     <!-- <AccordionLayout title={"Achievements"} icon={"mdi:trophy-award"}>
       {

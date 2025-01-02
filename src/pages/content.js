@@ -152,14 +152,14 @@ export const certificates = [
 	// }
 ]
 
-// Blogs --> #blogs section
-export const blogs = [
-	{
-		date: "Dec 30th, 2024",
-		url: "/blog/preface",
-		title: "Preface"
-	},
-]
+// // Blogs --> #blogs section
+// export const blogs = [
+// 	{
+// 		date: "Dec 30th, 2024",
+// 		url: "/blog/preface",
+// 		title: "Preface"
+// 	},
+// ]
 
 // Contact --> #contact section
 // export const contact = [
