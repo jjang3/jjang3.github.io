@@ -101,24 +101,24 @@ import { studyNotes } from "../content/studynotes";
   <!-- Example usage (with a new Accordion for Blogs) -->
   <AccordionLayout title="Blogs" icon="carbon:pen">
     {Object.entries(groupedBlogs).map(([month, posts], index) => (
-      <div style="margin: 1rem 0;">
-        {index > 0 && <hr style="margin-bottom: 0.5rem; border-bottom: 1px solid #444;" />}
+      <div class="my-4">
+        {index > 0 && <hr class="mb-2 border-gray-300 dark:border-gray-600" />}
   
         <!-- Month Header -->
-        <h3 style="font-weight: bold; margin-bottom: 0.5rem; color: #ddd;">
+        <h3 class="text-lg font-bold text-text dark:text-text-dark mb-2">
           {month}
         </h3>
   
         {posts.map((item) => (
-          <div style="margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #333;">
+          <div class="mb-4 pb-2 border-b border-gray-300 dark:border-gray-600">
             <!-- Title (non-hyperlinked) and "Read Here" link -->
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
-              <span style="font-weight: bold; font-size: 1rem; color: #ddd;">
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-bold text-lg text-text dark:text-text-dark">
                 {item.title}
               </span>
-              <a 
-                href={item.url} 
-                style="text-decoration: none; font-weight: bold; font-size: 0.9rem; color: #4ea8ed;" 
+              <a
+                href={item.url}
+                class="text-base font-bold text-blue-600 dark:text-blue-400 hover:underline"
                 target="_blank"
               >
                 Read Here
@@ -126,7 +126,7 @@ import { studyNotes } from "../content/studynotes";
             </div>
   
             <!-- Date -->
-            <span style="color: #aaa; font-size: 0.85rem;">
+            <span class="text-sm text-gray-600 dark:text-gray-400">
               {item.date}
             </span>
           </div>
@@ -134,18 +134,19 @@ import { studyNotes } from "../content/studynotes";
       </div>
     ))}
   </AccordionLayout>
+  
 
   <AccordionLayout title="Study Notes" icon="carbon:notebook">
     {studyNotes.map((note) => (
-      <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #444;">
+      <div class="mb-4 pb-4 border-b border-gray-400 dark:border-gray-600">
         <!-- Title (non-hyperlinked) and "View on Notion" link -->
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
-          <span style="font-weight: bold; font-size: 1.1rem; color: #ddd;">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-bold text-lg text-text dark:text-text-dark">
             {note.title}
           </span>
           <a 
             href={note.url} 
-            style="text-decoration: none; font-weight: bold; font-size: 0.9rem; color: #4ea8ed;" 
+            class="text-base font-bold text-blue-600 dark:text-blue-400 hover:underline" 
             target="_blank"
           >
             View on Notion
@@ -153,14 +154,14 @@ import { studyNotes } from "../content/studynotes";
         </div>
   
         <!-- Description with optional source link -->
-        <p style="margin: 4px 0; color: #aaa; font-size: 0.9rem;">
-          {note.description} 
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          {note.description}
           {note.desc_url && (
             <>
               {" "}
               <a 
                 href={note.desc_url} 
-                style="color: #4ea8ed; text-decoration: underline;" 
+                class="text-blue-600 dark:text-blue-400 underline" 
                 target="_blank"
               >
                 (Source)
@@ -171,6 +172,7 @@ import { studyNotes } from "../content/studynotes";
       </div>
     ))}
   </AccordionLayout>
+  
   
   
 
