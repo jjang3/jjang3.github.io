@@ -6,6 +6,8 @@ import { Icon } from "astro-icon"
 
 import { blogs, groupBlogsByMonth } from "../content/blogs";
 const groupedBlogs = groupBlogsByMonth(blogs);
+
+import { studyNotes } from "../content/studynotes";
 ---
 
 <ul class="shadow-box">
@@ -100,66 +102,76 @@ const groupedBlogs = groupBlogsByMonth(blogs);
   <AccordionLayout title="Blogs" icon="carbon:pen">
     {Object.entries(groupedBlogs).map(([month, posts], index) => (
       <div style="margin: 1rem 0;">
-        {index > 0 && <hr style="margin-bottom: 0.5rem; border-bottom: 1px solid #666;" />}
-
-        <h3 style="font-weight: bold; margin-bottom: 0.5rem;">{month}</h3>
+        {index > 0 && <hr style="margin-bottom: 0.5rem; border-bottom: 1px solid #444;" />}
+  
+        <!-- Month Header -->
+        <h3 style="font-weight: bold; margin-bottom: 0.5rem; color: #ddd;">
+          {month}
+        </h3>
+  
         {posts.map((item) => (
-          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-            <a href={item.url} style={{ textDecoration: "none", color: "inherit" }}>
-              {item.title}
-            </a>
-            <span style={{ whiteSpace: "nowrap" }}>{item.date}</span>
+          <div style="margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #333;">
+            <!-- Title (non-hyperlinked) and "Read Here" link -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+              <span style="font-weight: bold; font-size: 1rem; color: #ddd;">
+                {item.title}
+              </span>
+              <a 
+                href={item.url} 
+                style="text-decoration: none; font-weight: bold; font-size: 0.9rem; color: #4ea8ed;" 
+                target="_blank"
+              >
+                Read Here
+              </a>
+            </div>
+  
+            <!-- Date -->
+            <span style="color: #aaa; font-size: 0.85rem;">
+              {item.date}
+            </span>
           </div>
         ))}
       </div>
     ))}
   </AccordionLayout>
 
-    <!-- <AccordionLayout title={"Achievements"} icon={"mdi:trophy-award"}>
-      {
-        CONTENT.achievements.map((item) => {
-          return (
-            <Card
-              title={item.title}
-              timeframe={item.year}
-              description={item.decription}
-              tags=""
-              url="#"
-              url_name=""
-            />
-          );
-        })
-      }
-    </AccordionLayout> -->
-
-    <!-- <AccordionLayout title={"Contact"} icon={"ri:contacts-book-fill"}>
-      <div class="grid grid-cols-2 gap-8 py-4">
-        {
-          CONTENT.contact.map((item) => {
-            return (
-              <div class="flex items-center gap-2">
-                {item.source_icon.endsWith(".svg") ? (
-                  <img
-                    src={item.source_icon}
-                    alt={`${item.source_name} icon`}
-                    class="w-6 h-6"
-                  />
-                ) : (
-                  <Icon name={item.source_icon} class="w-6 h-6 text-text/70" />
-                )}
-                <a
-                  href={item.source}
-                  target="_blank"
-                  class="text-text/80 hover:text-text/100"
-                >
-                  {item.source_name}
-                </a>
-              </div>
-            );
-          })
-        }
+  <AccordionLayout title="Study Notes" icon="carbon:notebook">
+    {studyNotes.map((note) => (
+      <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #444;">
+        <!-- Title (non-hyperlinked) and "View on Notion" link -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <span style="font-weight: bold; font-size: 1.1rem; color: #ddd;">
+            {note.title}
+          </span>
+          <a 
+            href={note.url} 
+            style="text-decoration: none; font-weight: bold; font-size: 0.9rem; color: #4ea8ed;" 
+            target="_blank"
+          >
+            View on Notion
+          </a>
+        </div>
+  
+        <!-- Description with optional source link -->
+        <p style="margin: 4px 0; color: #aaa; font-size: 0.9rem;">
+          {note.description} 
+          {note.desc_url && (
+            <>
+              {" "}
+              <a 
+                href={note.desc_url} 
+                style="color: #4ea8ed; text-decoration: underline;" 
+                target="_blank"
+              >
+                (Source)
+              </a>
+            </>
+          )}
+        </p>
       </div>
-    </AccordionLayout> -->
-    
+    ))}
+  </AccordionLayout>
+  
+  
 
 </ul>
