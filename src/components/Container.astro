@@ -97,83 +97,86 @@ import { studyNotes } from "../content/studynotes";
       }
     </AccordionLayout> -->
      <!-- Blogs Accordion -->
-    
-  <!-- Example usage (with a new Accordion for Blogs) -->
-  <AccordionLayout title="Blogs" icon="carbon:pen">
-    {Object.entries(groupedBlogs).map(([month, posts], index) => (
-      <div class="my-4">
-        {index > 0 && <hr class="mb-2 border-gray-300 dark:border-gray-600" />}
-  
-        <!-- Month Header -->
-        <h3 class="text-lg font-bold text-text dark:text-text-dark mb-2">
-          {month}
-        </h3>
-  
-        {posts.map((item) => (
-          <div class="mb-4 pb-2 border-b border-gray-300 dark:border-gray-600">
-            <!-- Title (non-hyperlinked) and "Read Here" link -->
-            <div class="flex items-center justify-between mb-1">
-              <span class="font-bold text-lg text-text dark:text-text-dark">
-                {item.title}
-              </span>
-              <a
-                href={item.url}
-                class="text-base font-bold text-blue-600 dark:text-blue-400 hover:underline"
-                target="_blank"
-              >
-                Read Here
-              </a>
-            </div>
-  
-            <!-- Date -->
-            <span class="text-sm text-gray-600 dark:text-gray-400">
-              {item.date}
-            </span>
-          </div>
-        ))}
-      </div>
-    ))}
-  </AccordionLayout>
-  
+    <!-- Blogs Accordion -->
+<AccordionLayout title="Blogs" icon="carbon:pen">
+  {Object.entries(groupedBlogs).map(([month, posts], index) => (
+    <div class="my-4">
+      {index > 0 && <hr class="mb-2 border-gray-300 dark:border-gray-600" />}
 
-  <AccordionLayout title="Study Notes" icon="carbon:notebook">
-    {studyNotes.map((note) => (
-      <div class="mb-4 pb-4 border-b border-gray-400 dark:border-gray-600">
-        <!-- Title (non-hyperlinked) and "View on Notion" link -->
-        <div class="flex items-center justify-between mb-2">
-          <span class="font-bold text-lg text-text dark:text-text-dark">
-            {note.title}
+      <!-- Month Header -->
+      <h3 class="text-lg font-bold text-text dark:text-text-dark mb-2">
+        {month}
+      </h3>
+
+      {posts.map((item) => (
+        <div class="mb-4 pb-2 border-b border-gray-300 dark:border-gray-600">
+          <!-- Title (non-hyperlinked) and "Read Here" link -->
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-lg text-text dark:text-text-dark">
+              {item.title}
+            </span>
+            <a
+              href={item.url}
+              class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+              target="_blank"
+            >
+              Read Here
+              {item.url !== "#" && (
+                <Icon name="icon-park-outline:unlink" class="w-4 h-4 ml-2" />
+              )}
+            </a>
+          </div>
+
+          <!-- Date -->
+          <span class="text-sm text-gray-600 dark:text-gray-400">
+            {item.date}
           </span>
-          <a 
-            href={note.url} 
-            class="text-base font-bold text-blue-600 dark:text-blue-400 hover:underline" 
-            target="_blank"
-          >
-            View on Notion
-          </a>
         </div>
-  
-        <!-- Description with optional source link -->
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          {note.description}
-          {note.desc_url && (
-            <>
-              {" "}
-              <a 
-                href={note.desc_url} 
-                class="text-blue-600 dark:text-blue-400 underline" 
-                target="_blank"
-              >
-                (Source)
-              </a>
-            </>
+      ))}
+    </div>
+  ))}
+</AccordionLayout>
+
+<!-- Study Notes Accordion -->
+<AccordionLayout title="Study Notes" icon="carbon:notebook">
+  {studyNotes.map((note) => (
+    <div class="mb-4 pb-4 border-b border-gray-400 dark:border-gray-600">
+      <!-- Title (non-hyperlinked) and "View on Notion" link -->
+      <div class="flex items-center justify-between mb-2">
+        <span class="font-bold text-lg text-text dark:text-text-dark">
+          {note.title}
+        </span>
+        <a
+          href={note.url}
+          class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+          target="_blank"
+        >
+          View on Notion
+          {note.url !== "#" && (
+            <Icon name="icon-park-outline:unlink" class="w-4 h-4 ml-2" />
           )}
-        </p>
+        </a>
       </div>
-    ))}
-  </AccordionLayout>
-  
-  
+
+      <!-- Description with integrated source link -->
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        {note.description}
+        {note.desc_url && (
+          <>
+            {" "}
+            <a
+              href={note.desc_url}
+              class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+              target="_blank"
+            >
+              (Source)</a>.
+          </>
+        )}
+      </p>
+    </div>
+  ))}
+</AccordionLayout>
+
   
 
 </ul>
