@@ -46,6 +46,7 @@ export interface BlogPost {
   
   // 5. Your blogs array
   export const blogs: BlogPost[] = [
+      /*
     {
       date: "Dec 30th, 2024", // will become "Dec 30, 2024" internally
       url: "/blog/preface",
@@ -57,5 +58,6 @@ export interface BlogPost {
         url: "/blog/intro-elem",
         title: "Introduction - Elementary (Part 1)"
     },
+    */
   ];
   
