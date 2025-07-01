@@ -1,5 +1,5 @@
 // Personal Information --> #hero section
-export const name = "Jay Jang"
+export const name = "Jae-Won Jang"
 export const designation = "Cyber Engineer"
 export const location = "McLean, VA"
 export const pronouns = "he/him"
